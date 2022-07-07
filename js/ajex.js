@@ -9,7 +9,7 @@ $(document).ready(function () {
         var age = $("#age").val();
         var address = $('#address').val();
         $.ajax({
-            url: "register.php",
+            url: "index.php",
             type: "POST",
             data: { first_name: first_name, last_name: last_name, email: email, gender: gender, age: age, address: address },
             success: function (data) {
@@ -82,17 +82,32 @@ $(document).ready(function () {
         $.ajax({
             url: "ajax_update_form.php",
             type: "POST",
-            data: { edit_id: edit_id, edit_fname:edit_fname, edit_lname: edit_lname, edit_email: edit_email, edit_gender: edit_gender, edit_age: edit_age, edit_address: edit_address },
+            data: { edit_id: edit_id, edit_fname: edit_fname, edit_lname: edit_lname, edit_email: edit_email, edit_gender: edit_gender, edit_age: edit_age, edit_address: edit_address },
             success: function (data) {
-                if(data==1){
+                if (data == 1) {
                     $("#model").hide();
                     loadData();
                 }
-               
+
             }
         });
 
 
+    });
+
+    //working on live search 
+
+    $("#search").on("keyup", function () {
+        var search_terms = $(this).val();
+        // alert(search_terms);
+        $.ajax({
+            url: "ajax_search.php",
+            type: "POST",
+            data: {search: search_terms },
+            success: function (data) {
+                $("#display").html(data);
+            }
+        });
     });
 
 

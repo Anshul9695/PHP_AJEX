@@ -4,7 +4,6 @@ include 'header.php';
 $errors = array();
 ?>
 
-
 <form action="register.php" method="post">
     <div>
         <?php if (count($errors) > 0) : ?>
@@ -84,6 +83,13 @@ if (count($errors) == 0) {
 <!-- LOAD THE DATA IN TABLE  -->
 <button type="submit" class="registerbtn" id="LoadData">Load Table Data</button>
 <table>
+
+<tr>
+    <td>
+    <input type="text" name="search" id="search" class="search" placeholder="Search condidate By Name">
+    </td>
+
+</tr>
     <tr>
         <td id="display">
         </td>
